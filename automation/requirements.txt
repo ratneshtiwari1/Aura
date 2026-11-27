@@ -1,1 +1,3 @@
--e .
+# The automation package is imported directly from the repository root. Keep
+# its development requirements aligned with the backend runtime requirements.
+-r ../backend/requirements.txt

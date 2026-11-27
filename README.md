@@ -18,7 +18,7 @@ For the implementation-level process flows, agent roles, and tool inventory, see
 
 ## Requirements
 
-- Python 3.12 (tested)
+- Python 3.12 (project baseline; the Docker image uses Python 3.12)
 - Node.js 18+ and npm
 - Azure OpenAI deployment configured through Azure AI Foundry for the assistant
 - Power BI Desktop to open generated projects
@@ -34,6 +34,11 @@ python -m venv .venv
 python -m pip install -r backend\requirements.txt
 Copy-Item .env.example .env
 ```
+
+The backend requirements include the dependencies used by `automation`. If you
+are installing only the automation tooling, use
+`python -m pip install -r automation\requirements.txt`; it is kept as a
+wrapper around the same dependency set.
 
 Edit `.env` and configure the Azure settings:
 
