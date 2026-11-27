@@ -1,0 +1,33 @@
+"""Central product guardrails shared by API and agent workflows.
+
+These values are compatibility and safety limits, not workbook-specific business
+assumptions. Keeping them here prevents planners, validators, and APIs from
+quietly drifting apart.
+"""
+
+from automation.policy import MAX_VISUALS_PER_PAGE, MIN_RELATIONSHIP_CONFIDENCE
+
+MAX_PREVIEW_POINTS = 12
+MAX_RANKING_COUNT = 50
+MAX_CONVERSATION_MESSAGES = 50
+MAX_MESSAGE_CHARACTERS = 4_000
+
+MAX_AGENT_PLAN_STEPS = 3
+MAX_AGENT_REASON_CHARACTERS = 300
+MAX_AGENT_MESSAGE_CHARACTERS = 1_000
+MAX_AGENT_CLARIFICATION_OPTIONS = 8
+MAX_CATEGORY_CARDINALITY = 100
+
+__all__ = [
+    "MAX_AGENT_MESSAGE_CHARACTERS",
+    "MAX_AGENT_CLARIFICATION_OPTIONS",
+    "MAX_AGENT_PLAN_STEPS",
+    "MAX_AGENT_REASON_CHARACTERS",
+    "MAX_CONVERSATION_MESSAGES",
+    "MAX_MESSAGE_CHARACTERS",
+    "MAX_PREVIEW_POINTS",
+    "MAX_RANKING_COUNT",
+    "MAX_CATEGORY_CARDINALITY",
+    "MAX_VISUALS_PER_PAGE",
+    "MIN_RELATIONSHIP_CONFIDENCE",
+]

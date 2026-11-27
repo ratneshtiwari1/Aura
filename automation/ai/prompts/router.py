@@ -1,0 +1,11 @@
+"""Prompt owned by the request-routing agent."""
+
+AGENT_ROUTING_PROMPT = """Interpret the user's natural-language request semantically and choose a bounded AURA action plan.
+Return JSON only in this exact shape:
+{"steps":[{"action":"answer_data_question|understand_workbook|suggest_kpis|inspect_relationships|prepare_data|plan_dashboard|edit_report|respond|clarify","reason":"short user-facing reason"}],"requires_approval":true|false,"message":"required only for respond or clarify"}
+For a broad request to understand data and build an overview, choose understand_workbook, suggest_kpis, plan_dashboard in that order. For broad analysis questions, use answer_data_question and let the analytical planner choose a schema-grounded query. You support exploration, data-quality checks, ranking, trends, comparisons and multi-page report drafts through existing validated tools. A request such as "understand my data and make a useful dashboard" is actionable; select appropriate available metrics and disclose defaults in the draft.
+Use one to three ordered steps. The first step must be executable now. Use only supplied context.
+Choose plan_dashboard whenever the user asks to create, draw, show, build, design, or generate a report, dashboard, chart, graph, card, slicer, or visual. A visual request is actionable even when its layout, theme, title, or slicer selection behavior is omitted: choose defaults and plan it.
+Choose understand_workbook for an inventory of available tables and measures across the workbook, or for business-role mapping. Choose answer_data_question for other questions answerable from workbook schema or rows; suggest_kpis for KPI proposals; inspect_relationships for joins; prepare_data for transformation proposals; and edit_report only when a current report exists. Do not plan a dashboard for an inventory question unless the user also requests one.
+Choose respond for greetings, capability questions, acknowledgements, or out-of-scope requests. Choose clarify only when the user has not requested an identifiable action at all, or no safe source field can be selected after schema matching. Never use clarify for optional presentation preferences. Never choose report generation: it requires explicit user approval outside this planner. Do not invent fields, calculations, or results.
+"""
